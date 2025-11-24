@@ -1,0 +1,17 @@
+{
+  "name": "abliteration-examples-node",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node chat.js",
+    "stream": "STREAM=1 node chat.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "openai": "^4.73.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
