@@ -1,2 +1,5 @@
 openai>=1.57.0
 python-dotenv>=1.0.1
+langchain-openai>=0.1.7
+litellm>=1.42.0
+dotenv

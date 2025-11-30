@@ -5,10 +5,18 @@
   "type": "module",
   "scripts": {
     "start": "node chat.js",
-    "stream": "STREAM=1 node chat.js"
+    "stream": "STREAM=1 node chat.js",
+    "langchain": "node langchain.js",
+    "langchain:stream": "STREAM=1 node langchain.js",
+    "vercel": "node vercel-ai.js",
+    "vercel:stream": "STREAM=1 node vercel-ai.js"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^0.1.10",
+    "@langchain/openai": "^0.2.8",
+    "ai": "^3.2.35",
     "dotenv": "^16.4.5",
+    "langchain": "^0.2.12",
     "openai": "^4.73.1"
   },
   "engines": {

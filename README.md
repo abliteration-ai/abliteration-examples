@@ -15,11 +15,13 @@ A compact set of runnable examples for the Abliteration.ai chat API. Every sampl
     -d '{"model":"abliterated-model","messages":[{"role":"user","content":"What is the difference between US and Russia?"}], "stream": true}'
   ```
 - **Stream tokens with the OpenAI SDK:** run `npm run stream` in `node/` or `STREAM=1 python python/chat.py` in `python/`.
+- **Try integrations:** LangChain (`npm run langchain` or `python python/langchain_chat.py`), Vercel AI SDK (`npm run vercel`), and LiteLLM (`python python/litellm_chat.py`).
 
 ## Repo layout
 - `node/` — JavaScript + OpenAI SDK; shows non-streaming and streaming.
 - `python/` — Python + OpenAI SDK; same patterns as Node.
 - `curl/` — shell snippets for quick manual requests.
+- Integrations: `node/langchain.js`, `node/vercel-ai.js`, `python/langchain_chat.py`, `python/litellm_chat.py`.
 
 ## Get an API key
 1) Open the [abliteration.ai](https://abliteration.ai) web UI and sign up or log in.
@@ -36,5 +38,41 @@ A compact set of runnable examples for the Abliteration.ai chat API. Every sampl
 ## FAQ
 - **Is abliteration.ai OpenAI-compatible?** Yes—point your OpenAI SDKs to `baseURL=https://api.abliteration.ai/v1`.
 - **Can I stream tokens?** Yes—set `stream: true`; see `node/chat.js` and `python/chat.py` for examples.
-- **Where do I get an API key?** From the Abliteration web UI under **Profile → API Keys**.
+- **Where do I get an API key?** From the abliteration.ai web UI under **API Integration & Code Examples** → **Create New Secret Key**.
 - **What’s included here?** Copy/paste clients, curl snippets, and onboarding steps for building chatbots on abliteration.ai.
+
+## Integration examples
+
+### LangChain (Node)
+```bash
+cd node
+npm install
+ABLITERATION_API_KEY=ak_your_key_here npm run langchain          # non-streaming
+ABLITERATION_API_KEY=ak_your_key_here STREAM=1 npm run langchain:stream
+```
+`node/langchain.js` sets `OPENAI_BASE_URL` so LangChain’s OpenAI wrapper routes to abliteration.ai automatically.
+
+### Vercel AI SDK
+```bash
+cd node
+npm install
+ABLITERATION_API_KEY=ak_your_key_here npm run vercel
+ABLITERATION_API_KEY=ak_your_key_here STREAM=1 npm run vercel:stream
+```
+Uses `@ai-sdk/openai` with `baseURL=https://api.abliteration.ai/v1`.
+
+### LangChain (Python)
+```bash
+pip install -r python/requirements.txt
+ABLITERATION_API_KEY=ak_your_key_here python python/langchain_chat.py
+STREAM=1 ABLITERATION_API_KEY=ak_your_key_here python python/langchain_chat.py
+```
+`python/langchain_chat.py` wires `OPENAI_BASE_URL` and `OPENAI_API_KEY` before creating `ChatOpenAI`.
+
+### LiteLLM (Python)
+```bash
+pip install -r python/requirements.txt
+ABLITERATION_API_KEY=ak_your_key_here python python/litellm_chat.py
+STREAM=1 ABLITERATION_API_KEY=ak_your_key_here python python/litellm_chat.py
+```
+`python/litellm_chat.py` calls `litellm.completion` with `api_base=https://api.abliteration.ai/v1` to stay OpenAI-compatible. LiteLLM needs a provider prefix in the model name, so use `ABLITERATION_MODEL=openai/abliterated-model` (the script will add `openai/` automatically if you leave it off).
