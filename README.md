@@ -15,11 +15,26 @@ A compact set of runnable examples for the Abliteration.ai chat API. Every sampl
     -d '{"model":"abliterated-model","messages":[{"role":"user","content":"What is the difference between US and Russia?"}], "stream": true}'
   ```
 - **Stream tokens with the OpenAI SDK:** run `npm run stream` in `node/` or `STREAM=1 python python/chat.py` in `python/`.
+- **Go quickstart:**
+  ```bash
+  cd go
+  go run .                                  # non-streaming
+  STREAM=1 ABLITERATION_API_KEY=ak_your_key_here go run .  # streaming
+  ```
+- **Java quickstart (Maven):**
+  ```bash
+  cd java
+  mvn -q compile
+  ABLITERATION_API_KEY=ak_your_key_here mvn -q exec:java    # non-streaming
+  STREAM=1 ABLITERATION_API_KEY=ak_your_key_here mvn -q exec:java
+  ```
 - **Try integrations:** LangChain (`npm run langchain` or `python python/langchain_chat.py`), Vercel AI SDK (`npm run vercel`), and LiteLLM (`python python/litellm_chat.py`).
 
 ## Repo layout
 - `node/` — JavaScript + OpenAI SDK; shows non-streaming and streaming.
 - `python/` — Python + OpenAI SDK; same patterns as Node.
+- `go/` — Go + go-openai client, streaming and non-streaming in one file.
+- `java/` — Java 17 + Maven + `java.net.http`, with streaming via SSE.
 - `curl/` — shell snippets for quick manual requests.
 - Integrations: `node/langchain.js`, `node/vercel-ai.js`, `python/langchain_chat.py`, `python/litellm_chat.py`.
 
@@ -76,3 +91,20 @@ ABLITERATION_API_KEY=ak_your_key_here python python/litellm_chat.py
 STREAM=1 ABLITERATION_API_KEY=ak_your_key_here python python/litellm_chat.py
 ```
 `python/litellm_chat.py` calls `litellm.completion` with `api_base=https://api.abliteration.ai/v1` to stay OpenAI-compatible. LiteLLM needs a provider prefix in the model name, so use `ABLITERATION_MODEL=openai/abliterated-model` (the script will add `openai/` automatically if you leave it off).
+
+### Go
+```bash
+cd go
+go run .
+STREAM=1 ABLITERATION_API_KEY=ak_your_key_here go run .
+```
+Uses `github.com/sashabaranov/go-openai` with `BaseURL` pointed at `https://api.abliteration.ai/v1`.
+
+### Java
+```bash
+cd java
+mvn -q compile
+ABLITERATION_API_KEY=ak_your_key_here mvn -q exec:java
+STREAM=1 ABLITERATION_API_KEY=ak_your_key_here mvn -q exec:java
+```
+Plain `java.net.http` client posts to `/chat/completions` and supports SSE streaming when `STREAM=1`.
