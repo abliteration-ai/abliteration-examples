@@ -1,0 +1,2 @@
+2026-01-13T10:12:42Z policy_id=policy-gateway decision=rewrite reason_code=REWRITE policy_user=user-12345 policy_project_id=support-bot rollout_mode=enforced
+2026-01-13T10:13:05Z policy_id=policy-gateway decision=allow reason_code=ALLOW policy_user=user-12345 policy_project_id=support-bot rollout_mode=shadow

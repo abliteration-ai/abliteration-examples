@@ -1,0 +1,2 @@
+policy_gateway_event {'policy_id': 'policy-gateway', 'decision': 'rewrite', 'reason_code': 'REWRITE', 'policy_user': 'user-12345', 'project_id': 'support-bot'}
+policy_gateway_event {'policy_id': 'policy-gateway', 'decision': 'allow', 'reason_code': 'ALLOW', 'policy_user': 'user-12345', 'project_id': 'support-bot'}

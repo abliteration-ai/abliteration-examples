@@ -36,6 +36,7 @@ A compact set of runnable examples for the Abliteration.ai chat API. Every sampl
 - `go/` — Go + go-openai client, streaming and non-streaming in one file.
 - `java/` — Java 17 + Maven + `java.net.http`, with streaming via SSE.
 - `curl/` — shell snippets for quick manual requests.
+- `connectors/` — Policy Gateway connectors (Next.js, FastAPI, LangChain, LiteLLM).
 - Integrations: `node/langchain.js`, `node/vercel-ai.js`, `python/langchain_chat.py`, `python/litellm_chat.py`.
 
 ## Get an API key
@@ -57,6 +58,9 @@ A compact set of runnable examples for the Abliteration.ai chat API. Every sampl
 - **What’s included here?** Copy/paste clients, curl snippets, and onboarding steps for building chatbots on abliteration.ai.
 
 ## Integration examples
+
+### Policy Gateway connectors
+See `connectors/` for quickstarts and sample logs. These helpers route through the Policy Gateway to add policy enforcement and audit logging. Learn more at [abliteration.ai/policy-gateway](https://abliteration.ai/policy-gateway).
 
 ### LangChain (Node)
 ```bash

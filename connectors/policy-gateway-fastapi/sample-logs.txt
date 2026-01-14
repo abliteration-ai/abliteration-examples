@@ -1,0 +1,2 @@
+2026-01-13T09:02:11Z policy_id=policy-gateway decision=allow reason_code=ALLOW policy_user=user-8831 policy_project_id=support-bot rollout_mode=enforced
+2026-01-13T09:03:18Z policy_id=policy-gateway decision=refuse reason_code=USER_QUOTA_EXCEEDED policy_user=user-8831 policy_project_id=support-bot rollout_mode=enforced
